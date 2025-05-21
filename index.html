@@ -57,6 +57,8 @@
       padding: 20px;
       border-radius: 6px;
       max-width: 600px;
+      z-index: 1;
+      position: relative;
     }
     .label {
       font-weight: bold;
@@ -71,41 +73,33 @@
       color: #39c2b1;
       text-decoration: none;
     }
-    .wave {
+    .svg-pattern {
       position: absolute;
-      width: 100%;
-      height: 100px;
-      pointer-events: none;
-    }
-    .wave-top {
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
     }
-    .wave-bottom {
-      bottom: 0;
-      right: 0;
-      transform: rotate(180deg);
+    .svg-pattern path {
+      fill: none;
+      stroke-width: 0.8;
+      stroke-dasharray: 4 2;
     }
-  .svg-pattern {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.05;
-}
-
-.svg-pattern path {
-  stroke: #39c2b1;
-  fill: none;
-  stroke-width: 1;
-  stroke-dasharray: 5;
-}
-
-    </style>
-
+  </style>
 </head>
 <body>
+  <svg class="svg-pattern" viewBox="0 0 1000 1000">
+    <path d="M0 100 C 250 150, 750 50, 1000 100" stroke="#39c2b1" opacity="0.05" />
+    <path d="M0 200 C 300 250, 700 150, 1000 200" stroke="#f5c518" opacity="0.04" />
+    <path d="M0 300 C 200 350, 800 250, 1000 300" stroke="#39c2b1" opacity="0.05" />
+    <path d="M0 400 C 350 450, 650 350, 1000 400" stroke="#f5c518" opacity="0.05" />
+    <path d="M0 500 C 100 600, 900 400, 1000 500" stroke="#39c2b1" opacity="0.04" />
+    <path d="M0 600 C 400 700, 600 500, 1000 600" stroke="#f5c518" opacity="0.05" />
+    <path d="M0 700 C 150 750, 850 650, 1000 700" stroke="#39c2b1" opacity="0.05" />
+  </svg>
+
   <img src="levyr-logo-transparent.png" alt="LEVYR Logo" class="logo" />
   <h1>LEVYRscan</h1>
   <p class="subtitle">Public Report Verification Engine</p>
@@ -118,9 +112,6 @@
     <p><span class="label">Logic version:</span> <span id="versionOut"></span></p>
     <p><span class="label">Timestamp:</span> <span id="timeOut"></span></p>
   </div>
-
-  <svg class="wave wave-top" viewBox="0 0 1440 320"><path fill="#39c2b1" fill-opacity="0.3" d="M0,288L48,272C96,256,192,224,288,218.7C384,213,480,235,576,229.3C672,224,768,192,864,165.3C960,139,1056,117,1152,122.7C1248,128,1344,160,1392,176L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-  <svg class="wave wave-bottom" viewBox="0 0 1440 320"><path fill="#f5c518" fill-opacity="0.2" d="M0,288L48,272C96,256,192,224,288,218.7C384,213,480,235,576,229.3C672,224,768,192,864,165.3C960,139,1056,117,1152,122.7C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 
   <div class="footer">
     Powered by <a href="https://etherscan.io/apis" target="_blank">Etherscan.io APIs</a>. Contract data is independently anchored on-chain.
@@ -147,13 +138,5 @@
       document.getElementById("resultBox").style.display = "block";
     }
   </script>
-<svg class="svg-pattern" viewBox="0 0 1000 1000">
-  <path d="M0 100 C 250 150, 750 50, 1000 100" stroke="#39c2b1" stroke-width="0.8" fill="none" stroke-dasharray="4 2" opacity="0.05" />
-  <path d="M0 200 C 300 250, 700 150, 1000 200" stroke="#f5c518" stroke-width="0.8" fill="none" stroke-dasharray="2 3" opacity="0.04" />
-  <path d="M0 300 C 200 350, 800 250, 1000 300" stroke="#39c2b1" stroke-width="0.8" fill="none" stroke-dasharray="3 3" opacity="0.05" />
-  <path d="M0 400 C 350 450, 650 350, 1000 400" stroke="#f5c518" stroke-width="0.8" fill="none" stroke-dasharray="2 4" opacity="0.05" />
-  <path d="M0 500 C 100 600, 900 400, 1000 500" stroke="#39c2b1" stroke-width="0.8" fill="none" stroke-dasharray="5 2" opacity="0.04" />
-  <path d="M0 600 C 400 700, 600 500, 1000 600" stroke="#f5c518" stroke-width="0.8" fill="none" stroke-dasharray="3 3" opacity="0.05" />
-  <path d="M0 700 C 150 750, 850 650, 1000 700" stroke="#39c2b1" stroke-width="0.8" fill="none" stroke-dasharray="4 2" opacity="0.05" />
-</svg>
+</body>
 </html>
